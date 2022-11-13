@@ -76,7 +76,7 @@ func TestReverseList(t *testing.T) {
 	linkedList.Print()
 }
 
-func TestLinkedList_Add(t *testing.T) {
+func TestLinkedList_Push(t *testing.T) {
 	head := &Node[int]{Value: 1}
 	linkedList := &LinkedList[int]{Head: head}
 
