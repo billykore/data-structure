@@ -1,0 +1,3 @@
+# Belajar Data Structure
+Kodingannya pake Go.
+Gabut bro...
