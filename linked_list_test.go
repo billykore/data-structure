@@ -1,151 +1,71 @@
 package main
 
 import (
-	"fmt"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
+var linkedList = NewLinkedList(1, 2, 3, 4)
+
+func TestNewLinkedList(t *testing.T) {
+	assert.NotNil(t, linkedList)
+}
+
 func TestPrintLinkedList(t *testing.T) {
-	one := &Node[int]{Value: 1}
-	two := &Node[int]{Value: 2}
-	three := &Node[int]{Value: 3}
-	four := &Node[int]{Value: 4}
-	five := &Node[int]{Value: 5}
-
-	one.next = two
-	two.next = three
-	three.next = four
-	four.next = five
-
-	linkedList := &LinkedList[int]{Head: one}
 	linkedList.Print()
 }
 
+func TestLinkedList_Len(t *testing.T) {
+	length := linkedList.Len()
+	assert.Equal(t, 4, length)
+}
+
 func TestFindLinkedList(t *testing.T) {
-	one := &Node[int]{Value: 1}
-	two := &Node[int]{Value: 2}
-	three := &Node[int]{Value: 3}
-	four := &Node[int]{Value: 4}
-	five := &Node[int]{Value: 5}
-
-	one.next = two
-	two.next = three
-	three.next = four
-	four.next = five
-
-	linkedList := &LinkedList[int]{Head: one}
-	found1 := linkedList.Find(3)
-	found2 := linkedList.Find(7)
-
-	fmt.Println(found1)
-	fmt.Println(found2)
+	found := linkedList.Find(3)
+	notFound := linkedList.Find(7)
+	assert.True(t, found)
+	assert.False(t, notFound)
 }
 
 func TestNodeValue(t *testing.T) {
-	a := &Node[rune]{Value: 'A'}
-	b := &Node[rune]{Value: 'B'}
-	c := &Node[rune]{Value: 'C'}
-	d := &Node[rune]{Value: 'D'}
-
-	a.next = b
-	b.next = c
-	c.next = d
-
-	linkedList := &LinkedList[rune]{Head: a}
-	value1 := linkedList.Value(3)
-	value2 := linkedList.Value(7)
-
-	fmt.Println(string(value1))
-	fmt.Println(value2)
+	val := linkedList.Value(3)
+	zero := linkedList.Value(7)
+	assert.NotNil(t, val)
+	assert.Equal(t, zero, 0)
 }
 
 func TestReverseList(t *testing.T) {
-	one := &Node[int]{Value: 1}
-	two := &Node[int]{Value: 2}
-	three := &Node[int]{Value: 3}
-	four := &Node[int]{Value: 4}
-	five := &Node[int]{Value: 5}
-
-	one.next = two
-	two.next = three
-	three.next = four
-	four.next = five
-
-	linkedList := &LinkedList[int]{Head: one}
+	linkedList.Print()
 	linkedList.Reverse()
 	linkedList.Print()
 }
 
 func TestLinkedList_Push(t *testing.T) {
-	head := &Node[int]{Value: 1}
-	linkedList := &LinkedList[int]{Head: head}
-
-	linkedList.Push(2)
-	linkedList.Push(3)
-	linkedList.Push(4)
-	linkedList.Push(5)
+	linkedList.Push(7)
 	linkedList.Print()
 }
 
 func TestLinkedList_Append(t *testing.T) {
-	head := &Node[int]{Value: 1}
-	linkedList := &LinkedList[int]{Head: head}
-
-	linkedList.Append(3)
-	linkedList.Append(2)
-	linkedList.Append(4)
+	linkedList.Append(7)
 	linkedList.Print()
-	fmt.Println(linkedList.Len())
 }
 
 func TestLinkedList_Insert(t *testing.T) {
-	head := &Node[int]{Value: 1}
-	linkedList := &LinkedList[int]{Head: head}
-
-	linkedList.Append(3)
-	linkedList.Append(2)
-	linkedList.Append(4)
-	linkedList.Print()
-
 	linkedList.Insert(7, 2)
 	linkedList.Print()
 }
 
 func TestLinkedList_Pull(t *testing.T) {
-	head := &Node[int]{Value: 1}
-	linkedList := &LinkedList[int]{Head: head}
-
-	linkedList.Append(3)
-	linkedList.Append(2)
-	linkedList.Append(4)
-	linkedList.Print()
-
 	linkedList.Pull()
 	linkedList.Print()
 }
 
 func TestLinkedList_Delete(t *testing.T) {
-	head := &Node[int]{Value: 1}
-	linkedList := &LinkedList[int]{Head: head}
-
-	linkedList.Append(3)
-	linkedList.Append(2)
-	linkedList.Append(4)
-	linkedList.Print()
-
 	linkedList.Delete(2)
 	linkedList.Print()
 }
 
 func TestLinkedList_Pop(t *testing.T) {
-	head := &Node[int]{Value: 1}
-	linkedList := &LinkedList[int]{Head: head}
-
-	linkedList.Append(3)
-	linkedList.Append(2)
-	linkedList.Append(4)
-	linkedList.Print()
-
 	linkedList.Pop()
 	linkedList.Print()
 }
