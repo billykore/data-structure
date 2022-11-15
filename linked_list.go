@@ -14,6 +14,9 @@ type LinkedList[T comparable] struct {
 	length int
 }
 
+// NewLinkedList create new linked list.
+// First parameter is the head node of the list.
+// The rest of the parameters is the linked list nodes.
 func NewLinkedList[T comparable](head T, values ...T) *LinkedList[T] {
 	linkedList := &LinkedList[T]{
 		Head: &node[T]{value: head},
@@ -24,6 +27,7 @@ func NewLinkedList[T comparable](head T, values ...T) *LinkedList[T] {
 	return linkedList
 }
 
+// Print prints the linked list.
 func (ll *LinkedList[T]) Print() {
 	current := ll.Head
 	for current != nil {
@@ -36,10 +40,13 @@ func (ll *LinkedList[T]) Print() {
 	}
 }
 
+// Len return the length of the linked list.
 func (ll *LinkedList[T]) Len() int {
 	return ll.len()
 }
 
+// Find search if target node is exists in the linked list.
+// Returns true if target is exists, and false if the target is not exists.
 func (ll *LinkedList[T]) Find(target T) bool {
 	current := ll.Head
 	for current != nil {
@@ -51,6 +58,7 @@ func (ll *LinkedList[T]) Find(target T) bool {
 	return false
 }
 
+// Value returns the node's value in the linked list by the giving index.
 func (ll *LinkedList[T]) Value(index int) T {
 	current := ll.Head
 	for current != nil {
@@ -62,6 +70,7 @@ func (ll *LinkedList[T]) Value(index int) T {
 	return *new(T)
 }
 
+// Reverse the linked list.
 func (ll *LinkedList[T]) Reverse() {
 	current := ll.Head
 	ll.Head = new(node[T])
@@ -73,14 +82,17 @@ func (ll *LinkedList[T]) Reverse() {
 	}
 }
 
+// Push add new node in the beginning of the list.
 func (ll *LinkedList[T]) Push(data T) {
 	ll.push(data)
 }
 
+// Append add new node in the end of the list.
 func (ll *LinkedList[T]) Append(data T) {
 	ll.append(data)
 }
 
+// Insert new node at the giving index.
 func (ll *LinkedList[T]) Insert(data T, index int) {
 	if index > ll.len() {
 		fmt.Println("index out of list range")
@@ -104,10 +116,12 @@ func (ll *LinkedList[T]) Insert(data T, index int) {
 	}
 }
 
+// Pull delete the first node of the linked list.
 func (ll *LinkedList[T]) Pull() {
 	ll.pull()
 }
 
+// Pop delete the last node of the linked list.
 func (ll *LinkedList[T]) Pop() {
 	tail := ll.Head
 	for tail.next != nil {
@@ -119,6 +133,7 @@ func (ll *LinkedList[T]) Pop() {
 	}
 }
 
+// Delete node in the linked list at the giving index.
 func (ll *LinkedList[T]) Delete(index int) {
 	if index > ll.len() {
 		fmt.Println("index out of list range")
@@ -139,6 +154,11 @@ func (ll *LinkedList[T]) Delete(index int) {
 	}
 }
 
+func (ll *LinkedList[T]) Sort() {
+
+}
+
+// len count the length of the linked list.
 func (ll *LinkedList[T]) len() int {
 	current := ll.Head
 	for current != nil {
@@ -148,12 +168,14 @@ func (ll *LinkedList[T]) len() int {
 	return ll.length
 }
 
+// push add new node to the beginning of the linked list.
 func (ll *LinkedList[T]) push(data T) {
 	head := &node[T]{value: data}
 	head.next = ll.Head
 	ll.Head = head
 }
 
+// push add new node to the end of the linked list.
 func (ll *LinkedList[T]) append(data T) {
 	newNode := &node[T]{value: data}
 	tail := ll.Head
@@ -163,6 +185,7 @@ func (ll *LinkedList[T]) append(data T) {
 	tail.next = newNode
 }
 
+// pull delete the last node of the linked list.
 func (ll *LinkedList[T]) pull() {
 	ll.Head = ll.Head.next
 }
