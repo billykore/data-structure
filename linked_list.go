@@ -70,7 +70,7 @@ func (ll *LinkedList[T]) Value(index int) T {
 	return *new(T)
 }
 
-// Reverse the linked list.
+// Reverse will reverse the linked list.
 func (ll *LinkedList[T]) Reverse() {
 	current := ll.Head
 	ll.Head = new(node[T])
@@ -82,17 +82,17 @@ func (ll *LinkedList[T]) Reverse() {
 	}
 }
 
-// Push add new node in the beginning of the list.
+// Push will add new node in the beginning of the list.
 func (ll *LinkedList[T]) Push(data T) {
 	ll.push(data)
 }
 
-// Append add new node in the end of the list.
+// Append will add new node in the end of the list.
 func (ll *LinkedList[T]) Append(data T) {
 	ll.append(data)
 }
 
-// Insert new node at the giving index.
+// Insert will insert new node at the giving index.
 func (ll *LinkedList[T]) Insert(data T, index int) {
 	if index > ll.len() {
 		fmt.Println("index out of list range")
@@ -116,12 +116,12 @@ func (ll *LinkedList[T]) Insert(data T, index int) {
 	}
 }
 
-// Pull delete the first node of the linked list.
+// Pull will delete the first node of the linked list.
 func (ll *LinkedList[T]) Pull() {
 	ll.pull()
 }
 
-// Pop delete the last node of the linked list.
+// Pop will delete the last node of the linked list.
 func (ll *LinkedList[T]) Pop() {
 	tail := ll.Head
 	for tail.next != nil {
@@ -133,7 +133,7 @@ func (ll *LinkedList[T]) Pop() {
 	}
 }
 
-// Delete node in the linked list at the giving index.
+// Delete will delete node in the linked list at the giving index.
 func (ll *LinkedList[T]) Delete(index int) {
 	if index > ll.len() {
 		fmt.Println("index out of list range")
@@ -154,10 +154,6 @@ func (ll *LinkedList[T]) Delete(index int) {
 	}
 }
 
-func (ll *LinkedList[T]) Sort() {
-
-}
-
 // len count the length of the linked list.
 func (ll *LinkedList[T]) len() int {
 	current := ll.Head
@@ -175,7 +171,7 @@ func (ll *LinkedList[T]) push(data T) {
 	ll.Head = head
 }
 
-// push add new node to the end of the linked list.
+// push will add new node to the end of the linked list.
 func (ll *LinkedList[T]) append(data T) {
 	newNode := &node[T]{value: data}
 	tail := ll.Head
@@ -185,7 +181,7 @@ func (ll *LinkedList[T]) append(data T) {
 	tail.next = newNode
 }
 
-// pull delete the last node of the linked list.
+// pull will delete the last node of the linked list.
 func (ll *LinkedList[T]) pull() {
 	ll.Head = ll.Head.next
 }

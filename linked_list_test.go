@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-var linkedList = NewLinkedList(1, 2, 3, 4)
+var linkedList = NewLinkedList("Evanbill", "Antonio", "Kore", "Billy")
 
 func TestNewLinkedList(t *testing.T) {
 	assert.NotNil(t, linkedList)
@@ -21,8 +21,8 @@ func TestLinkedList_Len(t *testing.T) {
 }
 
 func TestFindLinkedList(t *testing.T) {
-	found := linkedList.Find(3)
-	notFound := linkedList.Find(7)
+	found := linkedList.Find("Kore")
+	notFound := linkedList.Find("Flo")
 	assert.True(t, found)
 	assert.False(t, notFound)
 }
@@ -31,7 +31,7 @@ func TestNodeValue(t *testing.T) {
 	val := linkedList.Value(3)
 	zero := linkedList.Value(7)
 	assert.NotNil(t, val)
-	assert.Equal(t, zero, 0)
+	assert.Equal(t, zero, "")
 }
 
 func TestReverseList(t *testing.T) {
@@ -41,17 +41,17 @@ func TestReverseList(t *testing.T) {
 }
 
 func TestLinkedList_Push(t *testing.T) {
-	linkedList.Push(7)
+	linkedList.Push("Flo")
 	linkedList.Print()
 }
 
 func TestLinkedList_Append(t *testing.T) {
-	linkedList.Append(7)
+	linkedList.Append("Oyen")
 	linkedList.Print()
 }
 
 func TestLinkedList_Insert(t *testing.T) {
-	linkedList.Insert(7, 2)
+	linkedList.Insert("Billy", 2)
 	linkedList.Print()
 }
 
